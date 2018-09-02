@@ -1,10 +1,20 @@
 package i2c
 
-import logger "github.com/d2r2/go-logger"
-
-// You can manage verbosity of log output
-// in the package by changing last parameter value.
-var lg = logger.NewPackageLogger("i2c",
-	logger.DebugLevel,
-	// logger.InfoLevel,
+import (
+	"github.com/sirupsen/logrus"
 )
+
+var (
+	lg = logrus.New()
+
+	PanicLevel = logrus.PanicLevel
+	FatalLevel = logrus.FatalLevel
+	ErrorLevel = logrus.ErrorLevel
+	WarnLevel = logrus.WarnLevel
+	InfoLevel = logrus.InfoLevel
+	DebugLevel = logrus.DebugLevel
+)
+
+func SetLogLevel(level logrus.Level) {
+	lg.SetLevel(level)
+}
